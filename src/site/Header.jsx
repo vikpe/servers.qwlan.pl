@@ -9,7 +9,7 @@ export const SiteHeader = () => (
           <img
             src="/assets/img/flag_of_poland.svg"
             width="96"
-            alt="QuakeWorld Hub"
+            alt="QWLAN.PL"
             className="w-[48px] sm:w-[96px] sm:h-[60px] mr-2"
           />
         </a>
