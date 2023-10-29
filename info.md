@@ -1,5 +1,3 @@
-# Info
-
 ## Schedule
 
 ### Wednesday
