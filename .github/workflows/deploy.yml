@@ -22,11 +22,6 @@ jobs:
       - name: Install
         run: yarn install --immutable
 
-      - name: Debug env vars
-        run: |
-          echo $VITE_HOSTNAME
-          echo $HOSTNAME
-
       - name: Build
         run: yarn build
 
