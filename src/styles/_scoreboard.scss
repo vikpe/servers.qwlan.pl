@@ -1,0 +1,16 @@
+$frags-width: 36px;
+$ping-width: 42px;
+$team-width: 40px;
+
+.scoreboard {
+  @apply grid text-sm app-text-outline;
+
+  .sc-row {
+    @apply grid items-center gap-2;
+    grid-template-columns: $ping-width $frags-width $team-width auto;
+  }
+
+  &.sc-hide-team .sc-row {
+    grid-template-columns: $ping-width $frags-width auto;
+  }
+}

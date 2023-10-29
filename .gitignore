@@ -1,0 +1,9 @@
+.idea/
+.firebase/
+coverage/
+dist/
+node_modules/
+!.gitkeep
+*.log
+.firebaserc
+.env.local
