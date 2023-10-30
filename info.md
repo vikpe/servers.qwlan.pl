@@ -2,26 +2,30 @@
 
 ### Wednesday
 
-- 13:00 - 16:00 - FFA
-- 16:00 - 21:00 - 4on4 groups
+- No tournaments
 
 ### Thursday
 
-- foo
-- bar
+- 13:00 - 16:00 - FFA
+- 16:00 - 21:00 - 4on4 groups
+- 20:00 - 24:00 - 1on1 groups
 
 ### Friday
 
-- foo
-- bar
+- 12:00 - 15:00 - 4on4 finals
+- 15:00 - 19:00 - 1on1 finals
+- 19:00 - 23:00 - 2on2 groups
+- 24:00 - 01:00 - Show match 4on4 POL vs MILTONS
 
 ### Saturday
 
-- foo
-- bar
+- 14:00 - 20:00 - 1on1 div0
+- 16:00 - 17:00 - 2on2 last 16
+- 17:00 - 18:00 - 2on2 last 8
+- 18:00 - 19:00 - 2on2 semis
+- 19:00 - 20:00 - 2on2 final
 
 ### Sunday
 
-- foo
-- bar
+- No tournaments
 
