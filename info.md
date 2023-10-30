@@ -2,8 +2,8 @@
 
 ### Wednesday
 
-- 20:00 - 2on2 group games
-- 22:00 - 2on2 playoffs
+- 13:00 - 16:00 - FFA
+- 16:00 - 21:00 - 4on4 groups
 
 ### Thursday
 
