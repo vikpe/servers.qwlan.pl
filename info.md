@@ -15,7 +15,7 @@
 - 12:00 - 15:00 - 4on4 finals
 - 15:00 - 19:00 - 1on1 finals
 - 19:00 - 23:00 - 2on2 groups
-- 24:00 - 01:00 - Show match 4on4 POL vs MILTONS
+- 24:00 - 01:00 - Show match 4on4 POL vs MILTON team
 
 ### Saturday
 
@@ -24,6 +24,7 @@
 - 17:00 - 18:00 - 2on2 last 8
 - 18:00 - 19:00 - 2on2 semis
 - 19:00 - 20:00 - 2on2 final
+- 24:00 - 01:00 - Show match 4on4 POL vs BPS team
 
 ### Sunday
 
