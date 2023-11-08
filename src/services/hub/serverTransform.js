@@ -1,4 +1,7 @@
 export const transformServer = (server) => {
+  server.settings.hostname = import.meta.env.VITE_HOSTNAME;
+  server.settings.hostname_parsed = server.settings.hostname;
+
   // exclude [ServeMe]
   const index = server.spectator_names.indexOf("[ServeMe]");
 
