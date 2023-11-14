@@ -1,5 +1,5 @@
 export const transformServer = (server) => {
-  server.address = server.address.replace("213.76.101.30", import.meta.env.VITE_HOSTNAME);
+  server.address = server.address.replace("109.173.162.189", import.meta.env.VITE_HOSTNAME);
   server.settings.hostname = import.meta.env.VITE_HOSTNAME;
   server.settings.hostname_parsed = server.settings.hostname;
 
