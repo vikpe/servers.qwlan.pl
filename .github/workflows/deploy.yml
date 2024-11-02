@@ -11,7 +11,7 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     env:
-      VITE_SERVER_HOSTNAME: '${{ secrets.VITE_SERVER_HOSTNAME }}'
+      VITE_SERVER_HOSTNAME: '${{ vars.VITE_SERVER_HOSTNAME }}'
       VITE_DEMOS_CLOUDFRONT_URL: '${{ vars.VITE_DEMOS_CLOUDFRONT_URL }}'
       VITE_ASSETS_CLOUDFRONT_URL: '${{ vars.VITE_ASSETS_CLOUDFRONT_URL }}'
       VITE_SUPABASE_URL: '${{ secrets.VITE_SUPABASE_URL }}'
