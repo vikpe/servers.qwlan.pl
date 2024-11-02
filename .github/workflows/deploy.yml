@@ -1,7 +1,7 @@
 name: Build and deploy
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # allow manually triggered runs
   push:
     branches:
       - main
@@ -10,13 +10,19 @@ jobs:
   build_and_deploy:
     timeout-minutes: 5
     runs-on: ubuntu-latest
+    env:
+      VITE_SERVER_HOSTNAME: '${{ secrets.VITE_SERVER_HOSTNAME }}'
+      VITE_DEMOS_CLOUDFRONT_URL: '${{ secrets.VITE_DEMOS_CLOUDFRONT_URL }}'
+      VITE_ASSETS_CLOUDFRONT_URL: '${{ secrets.VITE_ASSETS_CLOUDFRONT_URL }}'
+      VITE_SUPABASE_URL: '${{ secrets.VITE_SUPABASE_URL }}'
+      VITE_SUPABASE_ANON_KEY: '${{ secrets.VITE_SUPABASE_ANON_KEY }}'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'yarn'
 
       - name: Install

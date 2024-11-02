@@ -1,0 +1,39 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "a11y": {
+        "noAutofocus": "off",
+        "noSvgWithoutTitle": "off",
+        "useAltText": "off",
+        "useButtonType": "off",
+        "useKeyWithClickEvents": "off",
+        "noLabelWithoutControl": "off"
+      },
+      "correctness": {
+        "noConstructorReturn": "off",
+        "useExhaustiveDependencies": "off"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
+      },
+      "suspicious": {
+        "noArrayIndexKey": "off",
+        "noExplicitAny": "off"
+      },
+      "style": {
+        "useForOf": "off",
+        "useImportType": "off",
+        "noUselessElse": "off"
+      }
+    }
+  },
+  "formatter": {
+    "indentStyle": "space"
+  }
+}

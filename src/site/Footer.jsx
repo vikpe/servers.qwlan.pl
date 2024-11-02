@@ -1,17 +1,19 @@
-import { HorizontalSeparator } from "#/site/Common";
+import { HorizontalSeparator } from "@qwhub/site/Common";
 
 export const SiteFooter = () => {
   return (
-    <div id="app-footer" className="text-sm text-center pb-4 text-slate-400">
-      <div className="my-4">
-        <HorizontalSeparator />
+    <div id="app-footer" className="text-sm">
+      <HorizontalSeparator />
+
+      <div className="footer pt-1 text-slate-400 leading-loose mb-3 space-x-1 app-links flex items-center justify-center">
+        <img
+          src="/assets/img/flag_of_poland.svg"
+          width="20"
+          className="inline-block mr-0.5"
+        />
+        <a href="/">QWLAN.PL</a> <span>-</span>{" "}
+        <span>Polish QuakeWorld LAN Party 2024</span>
       </div>
-      <img
-        src="/assets/img/flag_of_poland.svg"
-        width="24"
-        className="inline-block mr-1"
-      />{" "}
-      QWLAN.pl - Polish QuakeWorld LAN Party
     </div>
   );
 };

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useGetLastscoresQuery } from "#/services/hub/hub";
+import { LastscoresScoreboard } from "@qwhub/servers/LastscoresScoreboard";
+import { Mapshot } from "@qwhub/servers/Mapshot";
+import { useGetLastscoresQuery } from "@qwhub/services/hub/hub";
 import classNames from "classnames";
-import { LastscoresScoreboard } from "#/servers/LastscoresScoreboard";
-import { Mapshot } from "#/servers/Mapshot";
+import React, { useEffect, useState } from "react";
 
 export const Lastscores = ({ address, onClose }) => {
   const { data, isLoading, isSuccess, isError } =
@@ -52,7 +52,7 @@ export const Lastscores = ({ address, onClose }) => {
                   <th className="p-1 text-center" width={1}>
                     scores
                   </th>
-                  <th></th>
+                  <th />
                 </tr>
               </thead>
               <tbody>
@@ -192,7 +192,7 @@ const TextSpoiler = ({ text, isRevealed = false }) => {
   return (
     <span
       className={classNames({ "blur-sm": !isRevealed })}
-      title="Reveal scores"
+      title="Show scores"
     >
       {text}
     </span>

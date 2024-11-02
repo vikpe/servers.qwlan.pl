@@ -1,7 +1,14 @@
+function fixAddress(address) {
+  return address.replaceAll("10.0.0.10", import.meta.env.VITE_SERVER_HOSTNAME);
+}
+
 export const transformServer = (server) => {
-  server.address = server.address.replace("109.173.162.189", import.meta.env.VITE_HOSTNAME);
-  server.settings.hostname = import.meta.env.VITE_HOSTNAME;
-  server.settings.hostname_parsed = server.settings.hostname;
+  // radomsko lan fix
+  server.address = fixAddress(server.address);
+  server.settings.hostname = fixAddress(server.settings.hostname);
+  server.settings.hostname_parsed = fixAddress(server.settings.hostname_parsed);
+  server.qtv_stream.address = fixAddress(server.qtv_stream.address);
+  server.qtv_stream.url = fixAddress(server.qtv_stream.url);
 
   // exclude [ServeMe]
   const index = server.spectator_names.indexOf("[ServeMe]");
@@ -18,7 +25,7 @@ export const transformServer = (server) => {
 };
 
 const metaByServer = (server) => {
-  let spectator_names = server.spectator_names.concat(
+  const spectator_names = server.spectator_names.concat(
     server.qtv_stream.spectator_names,
   );
 
@@ -27,9 +34,9 @@ const metaByServer = (server) => {
   if ("hostname" in server.settings) {
     if (
       "hostname_parsed" in server.settings &&
-      server.settings["hostname_parsed"] !== server.address
+      server.settings.hostname_parsed !== server.address
     ) {
-      addressTitle = server.settings["hostname_parsed"];
+      addressTitle = server.settings.hostname_parsed;
     } else {
       addressTitle = stripNonAscii(server.settings.hostname)
         .trim()
@@ -43,13 +50,6 @@ const metaByServer = (server) => {
   const spectatorText = calcSpectatorText(spectator_names);
   const isStarted = "Started" === server.status.name;
 
-  const showTeamColumn =
-    "teamplay" in server.settings && server.settings.teamplay > 0;
-  const showTeams =
-    showTeamColumn &&
-    server.teams.length < server.player_slots.used &&
-    server.teams.length <= 3;
-
   const showMatchTag =
     "matchtag" in server.settings &&
     !server.settings.matchtag.includes("prac") &&
@@ -60,10 +60,8 @@ const metaByServer = (server) => {
     isStandBy: !isStarted,
     addressTitle,
     spectatorText,
-    mapName: server.settings["map"],
+    mapName: server.settings.map,
     matchtag: showMatchTag ? server.settings.matchtag : "",
-    showTeams,
-    showTeamColumn,
     supportsLastscores: supportsLastscores(server.settings["*version"]),
   };
 
@@ -122,7 +120,7 @@ const supportsLastscores = (version) => {
       return false;
     }
     const parts = version.substring(0, "MVDSV 0.xx".length).split(" ");
-    const releaseNumber = parseFloat(parts[1]);
+    const releaseNumber = Number.parseFloat(parts[1]);
     const MIN_SUPPORTED_VERSION = 0.36;
     return releaseNumber >= MIN_SUPPORTED_VERSION;
   } catch (e) {

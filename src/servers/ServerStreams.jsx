@@ -1,6 +1,6 @@
+import { TwitchButton } from "@qwhub/Buttons";
+import { useGetStreamsQuery } from "@qwhub/services/hub/hub";
 import React from "react";
-import { useGetStreamsQuery } from "#/services/hub/hub";
-import { TwitchButton } from "#/Buttons";
 
 const ServersStreams = React.memo((props) => {
   const { address } = props;
@@ -20,7 +20,6 @@ const ServersStreams = React.memo((props) => {
       key={stream.channel}
       channel={stream.channel}
       viewers={stream.viewers}
-      className="flex justify-center"
     />
   ));
 });

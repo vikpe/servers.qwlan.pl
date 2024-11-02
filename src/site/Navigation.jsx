@@ -1,6 +1,6 @@
+import { selectServers } from "@qwhub/selectors";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
-import { selectServers } from "#/selectors";
 
 export default function SiteNavigation() {
   const servers = useSelector(selectServers);
@@ -8,6 +8,7 @@ export default function SiteNavigation() {
   const serverCount = servers.length;
   let playerCount = 0;
   let spectatorCount = 0;
+  let qtvCount = 0;
 
   for (let i = 0; i < serverCount; i++) {
     const server = servers[i];
@@ -16,6 +17,7 @@ export default function SiteNavigation() {
 
     if ("" !== server.qtv_stream.address) {
       spectatorCount += server.qtv_stream.spectator_count;
+      qtvCount++;
     }
   }
 
@@ -27,16 +29,22 @@ export default function SiteNavigation() {
       url: "/",
     },
     {
+      title: "QTV",
+      shortDescription: qtvCount,
+      longDescription: qtvCount,
+      url: "/qtv/",
+    },
+    {
       title: "Players",
       shortDescription: playerCount + spectatorCount,
       longDescription: `${playerCount} players, ${spectatorCount} spectators`,
       url: "/players/",
     },
     {
-      title: "Demos",
+      title: "Demos / Recent games",
       shortDescription: "",
       longDescription: "",
-      url: "/demos/",
+      url: "/games/",
     },
   ];
 

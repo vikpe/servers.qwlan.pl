@@ -1,6 +1,6 @@
 import React from "react";
 
-import { isTwitchExtensionEmbedded } from "#/util";
+import { isTwitchExtensionEmbedded } from "@qwhub/util";
 
 const themeBaseDefault = "text-white rounded shadow-md border bg-gradient-to-b";
 
@@ -21,13 +21,14 @@ const themeSecondary = {
 };
 
 export const PrimaryButton = React.memo((props) => {
-  const { href = "#", children, className = "" } = props;
+  const { href = "#", children, className = "", title = "" } = props;
 
   return (
     <a
       href={href}
       target="_top"
       className={`${themePrimary.default} ${themePrimary.hover} ${className}`}
+      title={title}
     >
       {children}
     </a>
@@ -35,12 +36,13 @@ export const PrimaryButton = React.memo((props) => {
 });
 
 export const SecondaryButton = React.memo((props) => {
-  const { href, children, count = 0, className = "" } = props;
+  const { href, children, count = 0, className = "", title = "" } = props;
   return (
     <a
       href={href}
       target="_top"
       className={`flex items-center justify-center p-1 ${themeSecondary.default} ${themeSecondary.hover} ${className}`}
+      title={title}
     >
       {children}
 
@@ -65,7 +67,9 @@ export const TwitchButton = (props) => {
       <span className="whitespace-nowrap space-x-1">
         {!isTwitchExtensionEmbedded() && (
           <img
-            src={`https://hub.quakeworld.nu/assets/img/icons/twitch_glitch_purple.svg`}
+            src={
+              "https://hub.quakeworld.nu/assets/img/icons/twitch_glitch_purple.svg"
+            }
             width="16"
             height="16"
             className="inline"

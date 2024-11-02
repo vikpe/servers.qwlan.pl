@@ -1,4 +1,6 @@
-import { useGetStreamsQuery } from "#/services/hub/hub";
+import { Heading } from "@qwhub/Common";
+import { useGetStreamsQuery } from "@qwhub/services/hub/hub";
+import React, { Fragment } from "react";
 import { TwitchButton } from "./Buttons";
 
 export function FeaturedStreams() {
@@ -21,4 +23,36 @@ const FeaturedStream = (props) => {
   const { stream } = props;
 
   return <TwitchButton {...stream} className="block px-3 py-1.5 rounded-lg" />;
+};
+
+export function AllStreams() {
+  const { data: streams = [] } = useGetStreamsQuery(null);
+
+  return (
+    <div className="app-links my-8">
+      <div>
+        <Heading text="Streams" icon="twitch_glitch_purple" iconSize={20} />
+      </div>
+      {streams.map((stream) => (
+        <StreamListItem key={stream.id} stream={stream} />
+      ))}
+    </div>
+  );
+}
+
+const StreamListItem = ({ stream }) => {
+  const { channel, url, viewers, title = "" } = stream;
+  const maxLength = 60;
+
+  return (
+    <Fragment>
+      <a href={url} className="inline-block ml-1.5" title={title}>
+        {channel}
+        <span>
+          ({viewers}) {title && <span>- {title.substring(0, maxLength)}</span>}
+        </span>
+      </a>
+      <br />
+    </Fragment>
+  );
 };

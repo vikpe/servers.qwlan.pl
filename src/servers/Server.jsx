@@ -1,11 +1,11 @@
-import React, { Fragment, useState } from "react";
+import { PrimaryButton, SecondaryButton } from "@qwhub/Buttons";
+import { QuakeText } from "@qwhub/QuakeText";
+import { Lastscores } from "@qwhub/servers/Lastscores";
+import { Mapshot } from "@qwhub/servers/Mapshot";
 import copyToClipboard from "copy-text-to-clipboard";
+import React, { Fragment, useState } from "react";
 import { Scoreboard } from "./Scoreboard";
-import { QuakeText } from "#/QuakeText";
-import { PrimaryButton, SecondaryButton } from "#/Buttons";
 import ServerStreams from "./ServerStreams";
-import { Lastscores } from "#/servers/Lastscores";
-import { Mapshot } from "#/servers/Mapshot";
 
 const VIEWS = {
   Scoreboard: "Scoreboard",
@@ -42,6 +42,7 @@ const ServerHeader = (props) => {
           <JoinButtonEl
             href={`qw://${server.address}/`}
             className="flex items-center px-5 text-lg rounded-lg"
+            title="Join as player"
           >
             Join
           </JoinButtonEl>
@@ -87,7 +88,8 @@ export const ServerBody = (props) => {
         onClose={() => setView(VIEWS.Scoreboard)}
       />
     );
-  } else if (view === VIEWS.Scoreboard) {
+  }
+  if (view === VIEWS.Scoreboard) {
     return (
       <Mapshot map={serverMeta.mapName}>
         <div className="flex flex-col h-full group py-4 min-h-[96px] sm:min-h-[200px] bg-gray-700/20">
@@ -121,13 +123,10 @@ export const ServerBody = (props) => {
             )}
           </div>
           <div className="flex flex-col justify-center items-center h-full px-2">
-            {serverMeta.matchtag && (
-              <div className="py-1.5 mb-3 uppercase font-bold tracking-widest text-xs text-center w-full bg-gradient-to-r from-red-600/0 via-red-600 app-text-shadow">
-                {serverMeta.matchtag}
-              </div>
-            )}
+            <Matchtag text={serverMeta.matchtag} />
             <Scoreboard
-              server={server}
+              players={server.players}
+              teams={server.teams}
               limit={serverMeta.playerDisplay.visible}
             />
             <HiddenPlayers count={serverMeta.playerDisplay.hidden} />
@@ -137,6 +136,18 @@ export const ServerBody = (props) => {
       </Mapshot>
     );
   }
+};
+
+export const Matchtag = ({ text = "" }) => {
+  if (0 === (text ?? "").trim().length) {
+    return null;
+  }
+
+  return (
+    <div className="py-1.5 mb-3 uppercase font-bold tracking-widest text-xs text-center w-full bg-gradient-to-r from-red-600/0 via-red-600 app-text-shadow">
+      {text}
+    </div>
+  );
 };
 
 const HiddenPlayers = React.memo((props) => {
@@ -168,32 +179,47 @@ const SpectatorText = React.memo((props) => {
   );
 });
 
-const SpectatorButtons = (props) => {
+export const SpectatorButtons = (props) => {
   const { server } = props;
 
   return (
-    <Fragment>
-      <div className="hidden sm:block">
+    <>
+      <div className="hidden sm:block sm:grow">
         <SecondaryButton
           href={`qw://${server.address}/observe`}
           count={server.spectator_slots.used}
+          title="Join as spectator"
         >
           Spectate
         </SecondaryButton>
       </div>
 
       {server.qtv_stream.address !== "" && (
-        <div className="hidden sm:block">
-          <SecondaryButton
-            href={`qw://${server.qtv_stream.url}/qtvplay`}
-            count={server.qtv_stream.spectator_count}
-          >
-            QTV
-          </SecondaryButton>
-        </div>
+        <>
+          <div className="hidden sm:block sm:grow">
+            <SecondaryButton
+              key={"qtv"}
+              href={`qw://${server.qtv_stream.url}/qtvplay`}
+              count={server.qtv_stream.spectator_count}
+              title="Join QTV"
+            >
+              QTV
+            </SecondaryButton>
+          </div>
+          <div className="sm:grow">
+            <SecondaryButton
+              key={"qtv-web"}
+              href={`/qtv/?address=${server.address}`}
+              count={0}
+              title="Watch QTV in browser"
+            >
+              Web QTV
+            </SecondaryButton>
+          </div>
+        </>
       )}
       {<ServerStreams address={server.address} />}
-    </Fragment>
+    </>
   );
 };
 
@@ -201,10 +227,10 @@ const ServerFooter = (props) => {
   const { server } = props;
 
   return (
-    <div className="p-2 sm:p-3 border-t border-t-black bg-[#334] text-sm grid grid-cols-2 gap-2">
+    <div className="p-2 sm:p-3 border-t border-t-black bg-[#334] text-sm flex flex-wrap gap-2">
       <SpectatorButtons server={server} />
 
-      <div className="col-span-2">
+      <div className="w-full">
         <div className="flex text-xs justify-between">
           <ServerAddress server={server} />
 
@@ -237,7 +263,7 @@ export const ServerAddress = (props) => {
   );
 };
 
-const ServerAddressTitle = React.memo((props) => {
+export const ServerAddressTitle = React.memo((props) => {
   const { cc, title } = props;
 
   return (

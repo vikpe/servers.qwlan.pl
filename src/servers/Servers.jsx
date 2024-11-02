@@ -1,7 +1,7 @@
+import { selectServers } from "@qwhub/selectors";
+import { useGetServersQuery } from "@qwhub/services/hub/hub";
 import { useSelector } from "react-redux";
 import { Server } from "./Server";
-import { useGetServersQuery } from "#/services/hub/hub";
-import { selectServers } from "#/selectors";
 
 export default function Servers() {
   const servers = useSelector(selectServers);
@@ -17,7 +17,9 @@ export default function Servers() {
   );
 }
 
-export function ServerPoller({ pollingInterval = 5000 }) {
-  const query = `hostname=${import.meta.env.VITE_HOSTNAME}&empty=include`;
-  useGetServersQuery(query, { pollingInterval });
+export function ServerPoller({ pollingInterval = 8 }) {
+  const query = `hostname=${import.meta.env.VITE_SERVER_HOSTNAME}&empty=include`;
+  useGetServersQuery(query, {
+    pollingInterval: pollingInterval * 1000,
+  });
 }

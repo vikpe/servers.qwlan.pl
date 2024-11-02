@@ -1,5 +1,5 @@
-import Markdown from "react-markdown";
 import { useEffect, useState } from "react";
+import Markdown from "react-markdown";
 
 export function MarkdownContent({ sourceUrl }) {
   const [mdInfo, setMdInfo] = useState("");
@@ -15,7 +15,7 @@ export function MarkdownContent({ sourceUrl }) {
   }
 
   return (
-    <div className="prose dark:prose-invert text-slate-400 prose-headings:text-slate-300">
+    <div className="prose dark:prose-invert text-slate-400 prose-headings:text-slate-300 text-sm">
       <Markdown>{mdInfo}</Markdown>
     </div>
   );
