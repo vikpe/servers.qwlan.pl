@@ -5,8 +5,7 @@ import { GameClock } from "@qwhub/pages/games/player/controls/GameClock.tsx";
 import { Participants } from "@qwhub/pages/games/player/controls/Participants.tsx";
 import { getAssetUrl } from "@qwhub/pages/games/services/cloudfront/cassets.ts";
 import classNames from "classnames";
-import { useRef } from "react";
-import { useResizeObserver } from "usehooks-ts";
+import { useElementSize } from "usehooks-ts";
 import { getMapshotCssUrl } from "../../../services/mapshots.ts";
 import { getDemoPlayerAssets } from "../fte/assets.ts";
 import { useFteController, useFteLoader } from "../fte/hooks.ts";
@@ -33,11 +32,7 @@ export const FteDemoPlayer = ({
     useFteLoader({ scriptPath, assets, demoDuration: demo.demo_duration });
   const fte = useFteController();
 
-  const playerRef = useRef(null);
-  const { width = 0 } = useResizeObserver({
-    ref: playerRef,
-    box: "content-box",
-  });
+  const [playerRef, { width }] = useElementSize();
   const defaultWidth = 1400;
   const scale = roundFloat(width / defaultWidth, 2);
 

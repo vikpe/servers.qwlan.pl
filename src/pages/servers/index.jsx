@@ -12,16 +12,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </Provider>
   </React.StrictMode>,
 );
-
-if (import.meta.env.PROD) {
-  console.log(`
-██╗  ██╗██╗   ██╗██████╗ 
-██║  ██║██║   ██║██╔══██╗
-███████║██║   ██║██████╔╝
-██╔══██║██║   ██║██╔══██╗
-██║  ██║╚██████╔╝██████╔╝
-╚═╝  ╚═╝ ╚═════╝ ╚═════╝
-
-source code: https://github.com/quakeworldnu/hub.quakeworld.nu
-`);
-}

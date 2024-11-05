@@ -15,7 +15,7 @@ export function MarkdownContent({ sourceUrl }) {
   }
 
   return (
-    <div className="prose dark:prose-invert text-slate-400 prose-headings:text-slate-300 text-sm">
+    <div className="dark prose dark:prose-invert text-slate-400 prose-headings:text-slate-300 text-sm">
       <Markdown>{mdInfo}</Markdown>
     </div>
   );
