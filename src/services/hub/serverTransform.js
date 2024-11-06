@@ -1,5 +1,8 @@
+const serverPublicIp = `${import.meta.env.VITE_SERVER_PUBLIC_IP}`;
+const serverHostname = `${import.meta.env.VITE_SERVER_HOSTNAME}`;
+
 function fixAddress(address) {
-  return address.replaceAll(import.meta.env.VITE_SERVER_PUBLIC_IP, import.meta.env.VITE_SERVER_HOSTNAME);
+  return address.replaceAll(serverPublicIp, serverHostname);
 }
 
 export const transformServer = (server) => {
