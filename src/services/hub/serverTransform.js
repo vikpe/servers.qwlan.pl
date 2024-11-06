@@ -1,8 +1,5 @@
-const serverPublicIp = `${import.meta.env.VITE_SERVER_PUBLIC_IP}`;
-const serverHostname = `${import.meta.env.VITE_SERVER_HOSTNAME}`;
-
 function fixAddress(address) {
-  return address.replace(serverPublicIp, serverHostname);
+  return address.replace("213.76.101.30", "play.qwlan.pl");
 }
 
 export const transformServer = (server) => {
