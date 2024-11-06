@@ -1,32 +1,29 @@
 ## Schedule
 
-### Wednesday
-
-- No tournaments
-
 ### Thursday
 
-- 13:00 - 16:00 - FFA
-- 16:00 - 21:00 - 4on4 groups
-- 20:00 - 24:00 - 1on1 groups
+- 14:00 - 16:00 - POV
+- 16:00 - 18:00 - FFA
+- 19:00 - 00:30 - 1on1 TB3
+- 23:30 - 00:00 - 4on4 draft
 
 ### Friday
 
-- 12:00 - 15:00 - 4on4 finals
-- 15:00 - 19:00 - 1on1 finals
-- 19:00 - 23:00 - 2on2 groups
-- 24:00 - 01:00 - Show match 4on4 POL vs MILTON team
+- 11:00 - 23:00 - 4on4
+- 23:00 - 00:00 - Show Match?
 
 ### Saturday
 
-- 14:00 - 20:00 - 1on1 div0
-- 16:00 - 17:00 - 2on2 last 16
-- 17:00 - 18:00 - 2on2 last 8
-- 18:00 - 19:00 - 2on2 semis
-- 19:00 - 20:00 - 2on2 final
-- 24:00 - 01:00 - Show match 4on4 POL vs BPS team
+- 13:00 - 18:00 - 1on1 "Macler invitational"
+- 19:00 - 00:30 - 1on1
 
 ### Sunday
+
+- 12:00 - 20:00 - 2on2
+- 20:00 - 22:00 - end
+- 23:00 - 00:00 - Show Match?
+
+### Monday
 
 - No tournaments
 
