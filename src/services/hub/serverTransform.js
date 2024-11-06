@@ -1,5 +1,5 @@
 function fixAddress(address) {
-  return address.replaceAll("10.0.0.10", import.meta.env.VITE_SERVER_HOSTNAME);
+  return address.replaceAll(import.meta.env.VITE_SERVER_PUBLIC_IP, import.meta.env.VITE_SERVER_HOSTNAME);
 }
 
 export const transformServer = (server) => {
