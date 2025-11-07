@@ -12,7 +12,7 @@ const supabase = createClient<Database>(
 
 export async function getGame(id: number): Promise<Game | null> {
   const { data } = await supabase
-    .from("games")
+    .from("v1_games")
     .select("*")
     .eq("id", id)
     .limit(1)
