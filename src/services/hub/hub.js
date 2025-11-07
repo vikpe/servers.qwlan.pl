@@ -14,7 +14,7 @@ export const hubApi = createApi({
       query: (query = "") =>
         query ? `servers/mvdsv/?${query}` : "servers/mvdsv/",
       transformResponse: (servers) => {
-        const servers_ = servers.map(transformServer);
+        const servers_ = servers.filter(s => s.address.includes("213.76.101.30:")).map(transformServer);
         servers_.sort(compareServers);
         return servers_;
       },
