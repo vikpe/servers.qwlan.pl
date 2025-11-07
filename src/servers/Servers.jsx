@@ -18,7 +18,7 @@ export default function Servers() {
 }
 
 export function ServerPoller({ pollingInterval = 8 }) {
-  const query = `empty=include`;
+  const query = `hostname=${import.meta.env.VITE_SERVER_HOSTNAME}&empty=include`;
   useGetServersQuery(query, {
     pollingInterval: pollingInterval * 1000,
   });
