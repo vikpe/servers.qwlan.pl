@@ -40,7 +40,7 @@ export async function searchGamesCount(settings: {
   teams: string;
 }): Promise<number> {
   let qb = supabase
-    .from("games")
+    .from("v1_games")
     .select("count", { head: true, count: "exact" });
   const { playerQuery, teams, map, gameMode } = settings;
 
@@ -87,7 +87,7 @@ export async function searchGamesRows(settings: {
   page: number;
 }): Promise<GameSearchEntry[]> {
   let qb = supabase
-    .from("games")
+    .from("v1_games")
     .select("id,timestamp,mode,matchtag,map,teams,players,demo_sha256");
 
   const { gameMode, map, playerQuery, teams } = settings;
