@@ -9,7 +9,7 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      games: {
+      v1_games: {
         Row: {
           demo_sha256: string | null;
           demo_source_url: string | null;
